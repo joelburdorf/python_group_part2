@@ -12,12 +12,18 @@ cur = con.cursor()
 #execute query
 cur.execute("insert into accounts (id, username) values (%s, %s)", (13, "Burdorf") )
 
-cur.execute("SELECT id, username from accounts")
+cur.execute("delete from accounts WHERE id='13'" )
+
+cur.execute("SELECT id, username, city from accounts")
+
+cur.execute("update accounts SET username ='me' WHERE id='12'")
+
+cur.execute("SELECT id, username, city from accounts")
 
 rows = cur.fetchall()
 
 for r in rows:
-    print(f"id {r[0]} username {r[1]}")
+    print(f"id {r[0]} username {r[1]} city {r[2]}")
 
 # commit 
 con.commit()
